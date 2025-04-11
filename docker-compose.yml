@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./api
+    container_name: ddvrBackend
+    environment:
+      MONGO_URI: "mongodb+srv://pranjal:ddvr@dreamdatevr.phdmt.mongodb.net/db?retryWrites=true&w=majority&appName=DreamDateVR"
+      JWT_SECRET: "Prashant"
+      CLIENT_URL: "http://localhost:5173"
+    ports:
+      - "5000:5000"
+    networks: 
+      - ddvrnetwork
+  frontend:
+    build: ./client
+    environment: 
+      CLIENT_URL: "http://localhost:5173"
+    ports:
+      - "5173:5173"
+    networks: 
+      - ddvrnetwork
+    depends_on: 
+      - backend
+    
+networks:
+  ddvrnetwork:
