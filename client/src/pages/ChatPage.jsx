@@ -42,7 +42,7 @@ const ChatPage = () => {
 					/>
 					<h2 className='text-xl font-semibold text-gray-800'>{match.name}</h2>
 					<button
-						onClick={() => (window.location.href = `/vr-chat/${id}`)}
+						onClick={() => window.open('http://localhost:3000', '_blank', 'noopener,noreferrer')}
 						className='ml-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300'
 					>
 						Go VR
@@ -59,11 +59,10 @@ const ChatPage = () => {
 								className={`mb-3 ${msg.sender === authUser._id ? "text-right" : "text-left"}`}
 							>
 								<span
-									className={`inline-block p-3 rounded-lg max-w-xs lg:max-w-md ${
-										msg.sender === authUser._id
+									className={`inline-block p-3 rounded-lg max-w-xs lg:max-w-md ${msg.sender === authUser._id
 											? "bg-pink-500 text-white"
 											: "bg-gray-200 text-gray-800"
-									}`}
+										}`}
 								>
 									{msg.content}
 								</span>
