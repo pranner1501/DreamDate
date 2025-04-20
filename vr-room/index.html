@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VR Room</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="client.js" defer></script>
+</head>
+<body>
+  <button id="joinBtn">Join Room</button>
+
+  <!-- Chat Input -->
+  <input id="chatInput" type="text" placeholder="Type a message and hit Enter" />
+
+  <!-- Floating message box -->
+  <div id="floatingMessage"></div>
+
+  <a-scene embedded>
+    <!-- Assets -->
+    <a-assets>
+      <a-asset-item id="avatar1Model" src="avatar1.glb"></a-asset-item>
+      <a-asset-item id="avatar2Model" src="avatar2.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- Room Walls -->
+    <a-box position="0 1.5 -3" width="6" height="3" depth="0.1" color="#FFF9C4"></a-box>
+    <a-box position="0 1.5 3" width="6" height="3" depth="0.1" color="#FFECB3"></a-box>
+    <a-box position="-3 1.5 0" width="0.1" height="3" depth="6" color="#FFF59D"></a-box>
+    <a-box position="3 1.5 0" width="0.1" height="3" depth="6" color="#FFF176"></a-box>
+
+    <!-- Ceiling & Floor -->
+    <a-box position="0 3 0" width="6" height="0.1" depth="6" color="#FFFFFF"></a-box>
+    <a-plane rotation="-90 0 0" width="6" height="6" color="#A0522D" position="0 0 0"></a-plane>
+
+    <!-- Player Avatars (mini and rotated to face each other) -->
+    <a-entity
+      id="player1"
+      gltf-model="#avatar1Model"
+      position="0 0 -1.5"
+      rotation="0 0 0"
+      scale="0.05 0.05 0.05"
+      visible="false"
+      animation-mixer>
+    </a-entity>
+
+    <a-entity
+      id="player2"
+      gltf-model="#avatar2Model"
+      position="0 0 1.5"
+      rotation="0 180 0"
+      scale="0.05 0.05 0.05"
+      visible="false"
+      animation-mixer>
+    </a-entity>
+
+    <!-- Camera POV -->
+    <a-entity id="cameraRig">
+      <a-camera id="playerCam" position="0 1.6 0" look-controls="enabled: true"></a-camera>
+    </a-entity>
+  </a-scene>
+</body>
+</html>
+
+

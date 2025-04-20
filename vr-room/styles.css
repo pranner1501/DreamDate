@@ -1,0 +1,53 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff0f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#joinBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+#chatInput {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 250px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+
+#floatingMessage {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffffcc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+
+
