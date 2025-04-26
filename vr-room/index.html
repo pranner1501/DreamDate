@@ -19,24 +19,36 @@
   <!-- Floating message box -->
   <div id="floatingMessage"></div>
 
+  <!-- Background Music -->
+  <audio id="backgroundMusic" loop>
+    <source src="romantic-music.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
   <a-scene embedded>
     <!-- Assets -->
     <a-assets>
+      <img id="wallFrontTexture" src="1.png">
+      <img id="wallBackTexture" src="2.png">
+      <img id="wallLeftTexture" src="3.png">
+      <img id="wallRightTexture" src="4.png">
+      <img id="ceilingTexture" src="5.png">
+      <img id="floorTexture" src="6.png">
       <a-asset-item id="avatar1Model" src="avatar1.glb"></a-asset-item>
       <a-asset-item id="avatar2Model" src="avatar2.glb"></a-asset-item>
     </a-assets>
 
     <!-- Room Walls -->
-    <a-box position="0 1.5 -3" width="6" height="3" depth="0.1" color="#FFF9C4"></a-box>
-    <a-box position="0 1.5 3" width="6" height="3" depth="0.1" color="#FFECB3"></a-box>
-    <a-box position="-3 1.5 0" width="0.1" height="3" depth="6" color="#FFF59D"></a-box>
-    <a-box position="3 1.5 0" width="0.1" height="3" depth="6" color="#FFF176"></a-box>
+    <a-box position="0 1.5 -3" width="6" height="3" depth="0.1" src="#wallFrontTexture"></a-box>
+    <a-box position="0 1.5 3" width="6" height="3" depth="0.1" src="#wallBackTexture"></a-box>
+    <a-box position="-3 1.5 0" width="0.1" height="3" depth="6" src="#wallLeftTexture"></a-box>
+    <a-box position="3 1.5 0" width="0.1" height="3" depth="6" src="#wallRightTexture"></a-box>
 
     <!-- Ceiling & Floor -->
-    <a-box position="0 3 0" width="6" height="0.1" depth="6" color="#FFFFFF"></a-box>
-    <a-plane rotation="-90 0 0" width="6" height="6" color="#A0522D" position="0 0 0"></a-plane>
+    <a-box position="0 3 0" width="6" height="0.1" depth="6" src="#ceilingTexture"></a-box>
+    <a-plane rotation="-90 0 0" width="6" height="6" position="0 0 0" src="#floorTexture"></a-plane>
 
-    <!-- Player Avatars (mini and rotated to face each other) -->
+    <!-- Player Avatars -->
     <a-entity
       id="player1"
       gltf-model="#avatar1Model"
@@ -57,12 +69,10 @@
       animation-mixer>
     </a-entity>
 
-    <!-- Camera POV -->
+    <!-- Camera -->
     <a-entity id="cameraRig">
       <a-camera id="playerCam" position="0 1.6 0" look-controls="enabled: true"></a-camera>
     </a-entity>
   </a-scene>
 </body>
 </html>
-
-

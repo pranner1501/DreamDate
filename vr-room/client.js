@@ -7,8 +7,16 @@ const player2Box = document.getElementById('player2');
 const cameraRig = document.getElementById('cameraRig');
 const chatInput = document.getElementById('chatInput');
 const floatingMessage = document.getElementById('floatingMessage');
+const bgMusic = document.getElementById('backgroundMusic');
 
 joinBtn.onclick = () => {
+  // Try to play the background music after user interaction
+  if (bgMusic.paused) {
+    bgMusic.play().catch(err => {
+      console.warn("Autoplay prevented:", err);
+    });
+  }
+
   socket = new WebSocket(`ws://${location.host}`);
 
   socket.onmessage = (event) => {
@@ -18,7 +26,6 @@ joinBtn.onclick = () => {
       role = msg.role;
       joinBtn.style.display = 'none';
 
-      // Set camera position and rotation to face the other player
       if (role === 'player1') {
         player2Box.setAttribute('visible', true);
         cameraRig.setAttribute('position', '0 0 -2.8');
@@ -29,7 +36,6 @@ joinBtn.onclick = () => {
         cameraRig.setAttribute('rotation', '0 0 0');
       }
 
-      // Lock look-controls briefly to prevent misorientation
       const cam = document.querySelector('#playerCam');
       cam.setAttribute('look-controls', 'enabled', false);
       setTimeout(() => {
@@ -75,6 +81,3 @@ function showFloatingMessage(text) {
     floatingMessage.style.opacity = 0;
   }, 3000);
 }
-
-
-
