@@ -42,7 +42,7 @@ const ChatPage = () => {
 					/>
 					<h2 className='text-xl font-semibold text-gray-800'>{match.name}</h2>
 					<button
-						onClick={() => window.open('http://localhost:3000', '_blank', 'noopener,noreferrer')}
+						onClick={() => window.open('https://vr-render.onrender.com', '_blank', 'noopener,noreferrer')}
 						className='ml-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300'
 					>
 						Go VR
